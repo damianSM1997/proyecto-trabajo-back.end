@@ -1,4 +1,4 @@
-require('./config/config')
+//require('./config/config')
 const express = require('express');
 const conectarDB = require('./config/db');
 const cors = require('cors')
@@ -16,7 +16,7 @@ app.use(cors())
 app.use(express.json({extended:true}));
 
 //puerto de la app
-//const port = process.env.PORT || 4000;
+const port = process.env.PORT || 4000;
 
 //importar rutas
 app.use('/api/usuarios', require('./routes/usuarios'));
@@ -27,10 +27,10 @@ app.use('/api/items', require('./routes/items'));
 
 
 //arrancar la app
-// app.listen(port, '0.0.0.0', () => {
-//     console.log(`Server online puerto ${port}`)
-// });
+ app.listen(port, '0.0.0.0', () => {
+     console.log(`Server online puerto ${port}`)
+ });
 
-app.listen(process.env.PORT, () => {
-    console.log('Escuchando puerto: ', process.env.PORT);
-});
+//app.listen(process.env.PORT, () => {
+//    console.log('Escuchando puerto: ', process.env.PORT);
+//});

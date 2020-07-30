@@ -29,10 +29,10 @@ process.env.SEED = process.env.SEED || 'este-es-el-seed-desarrollo';
 //  Base de datos
 // ============================
 let urlDB;
-
-//f (process.env.NODE_ENV === 'dev') {
-//   urlDB = 'mongodb://localhost:27017/cafe';
-//} else {
-urlDB = process.env.MONGO_URI;
-//}
+//DB_MONGO=mongodb+srv://damian:MI0E1zcZXQP20IwK@cluster0-naamb.mongodb.net/merntasks
+if (process.env.NODE_ENV === 'dev') {
+   urlDB = 'mongodb+srv://damian:MI0E1zcZXQP20IwK@cluster0-naamb.mongodb.net/merntasks';
+} else {
+urlDB = 'mongodb+srv://damian:MI0E1zcZXQP20IwK@cluster0-naamb.mongodb.net/merntasks';
+}
 process.env.URLDB = urlDB;
