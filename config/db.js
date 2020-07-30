@@ -18,7 +18,7 @@ const conectarDB = async() => {
     // }
     process.env.URLDB = urlDB;        
 
-    mongoose.connect(process.env.URLDB, {
+    mongoose.connect(urlDB, {
         useCreateIndex: true,
          useNewUrlParser: true,
          useUnifiedTopology: true,
@@ -26,7 +26,7 @@ const conectarDB = async() => {
         }).then(db => console.log('la base de datos esta conectada'))
         .catch(err => {
             console.log(err); 
-            process.exit(1);
+            //process.exit(1);
         });
 }
 
