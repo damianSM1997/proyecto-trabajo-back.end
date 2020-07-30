@@ -6,16 +6,16 @@ const conectarDB = async() => {
     process.env.NODE_ENV = process.env.NODE_ENV || 'dev';
 
 
-    let urlDB;
+    let urlDB = 'mongodb+srv://damian:MI0E1zcZXQP20IwK@cluster0-naamb.mongodb.net/merntasks';
     
     
-    if (process.env.NODE_ENV === 'dev') {
-        urlDB = 'mongodb+srv://damian:MI0E1zcZXQP20IwK@cluster0-naamb.mongodb.net/merntasks';
-    } else {
-        //esta sintaxis es la correcta de lo contrario heroku no reconocera
-        // la variable de entorno, bueno en este caso
-        urlDB = 'mongodb+srv://damian:MI0E1zcZXQP20IwK@cluster0-naamb.mongodb.net/merntasks';;
-    }
+    // if (process.env.NODE_ENV === 'dev') {
+    //     urlDB = 'mongodb+srv://damian:MI0E1zcZXQP20IwK@cluster0-naamb.mongodb.net/merntasks';
+    // } else {
+    //     //esta sintaxis es la correcta de lo contrario heroku no reconocera
+    //     // la variable de entorno, bueno en este caso
+    //     urlDB = 'mongodb+srv://damian:MI0E1zcZXQP20IwK@cluster0-naamb.mongodb.net/merntasks';;
+    // }
     process.env.URLDB = urlDB;        
 
     mongoose.connect(process.env.URLDB, {
