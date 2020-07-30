@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 require('dotenv').config({path: 'variables.env'});
 
 const conectarDB = async() => {
-    process.env.NODE_ENV = process.env.NODE_ENV || 'dev';
+    //process.env.NODE_ENV = process.env.NODE_ENV || 'dev';
 
 
     let urlDB = 'mongodb+srv://damian:MI0E1zcZXQP20IwK@cluster0-naamb.mongodb.net/merntasks';
