@@ -27,7 +27,7 @@ app.use('/api/items', require('./routes/items'));
 
 
 //arrancar la app
- app.listen(port, '0.0.0.0', () => {
+ app.listen(port, () => {
      console.log(`Server online puerto ${port}`)
  });
 
