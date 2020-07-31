@@ -4,7 +4,7 @@ const {validationResult} = require('express-validator');
 const jwt = require('jsonwebtoken');
 
 exports.autenticarUsuario = async (req,res) => {
-    let SECRETA = 'palabrasecreta';
+    //let SECRETA = 'palabrasecreta';
     //revisar si hay errores
     const errores = validationResult(req);
     if(!errores.isEmpty() ) {
@@ -36,8 +36,8 @@ exports.autenticarUsuario = async (req,res) => {
         };
 
         //firmar el jwt
-        //jwt.sign(payload, process.env.SECRETA, {
-            jwt.sign(payload, SECRETA, {
+        jwt.sign(payload, process.env.SECRETA, {
+            //jwt.sign(payload, SECRETA, {
             expiresIn: 3600000 //Tienpo de expiracion
         }, (error, token) => {
             if(error) throw error;

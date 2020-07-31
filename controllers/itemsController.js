@@ -27,20 +27,7 @@ exports.crearItem = async (req,res) => {
 }
 
 
-//Obtiene todos las cartas del usuario actual
-exports.obtenerItems = async (req,res) => {
-    try {
-        // console.log(req.usuario);        
-        const items = await Items.find({creador: req.usuario.id}).sort({creado: -1});
-        res.json({items})
-    } catch (error) {
-        console.log(error);
-        res.status(500).send('Hubo un error')
-    }
-}
-
-
-
+//parte para actualizar una carta a partir del id de la carta
 exports.actualizarItem = async (req,res) => {
 
     //revisar si hay errores
@@ -62,8 +49,7 @@ exports.actualizarItem = async (req,res) => {
     if(disponibles) nuevoItem.disponibles = disponibles;    
 
     try {
-        //revisar el ID
-        
+        //revisar el ID        
         let item = await Items.findById(req.params.id);
 
         //Si el item existe
@@ -80,6 +66,38 @@ exports.actualizarItem = async (req,res) => {
 
     } catch (error) {
         console.log(error);
-        res.status(500).send('Error en el servidor')
+        res.status(500).send('Error en el servidor');
     }
 }
+
+//eliminar item
+exports.eliminaritem = async (req,res) => {
+    try {
+        //revisar el ID
+        let item = await Items.findById(req.params.id);
+
+        //Si la carta  existe
+        if(!item) {
+            return res.status(404).json({msg: 'Carta no encontrado'})
+        }
+        //verificar el creador de la carta
+        if(item.creador.toString() !== req.usuario.id) {
+            return res.status(401).json({msg: 'No autorizado'})
+        }
+
+        //Eliminar la carta
+        //aqui se puede agregar una validacion para el caso de que disponibles
+        //sea igual a 0
+        await Items.findOneAndRemove({_id: req.params.id});
+        res.json({msg: 'Carta eliminado'});
+
+    } catch (error) {
+        console.log(error);
+        res.status(500).send('Error en el servidor')
+    }    
+}
+
+
+
+
+

@@ -17,15 +17,14 @@ router.post('/',
     itemsController.crearItem
 );
 
-router.get('/',
-    auth,
-    itemsController.obtenerItems
-)
-
-
 router.put('/:id',
     auth,
     itemsController.actualizarItem
+)
+
+router.delete('/:id',
+    auth,
+    itemsController.eliminaritem
 )
 
 module.exports = router;
