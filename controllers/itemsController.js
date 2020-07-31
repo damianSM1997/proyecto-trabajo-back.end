@@ -37,7 +37,7 @@ exports.actualizarItem = async (req,res) => {
     }
 
     //extraer la informacion del item
-    const {titulo, precio, descripcion, tipo, disponibles} = req.body;
+    const {titulo, precio, descripcion, tipo, disponibles, img} = req.body;
     //!titulo || !precio || !descripcion || !tipo || !disponibles
     const nuevoItem = {};            
 
@@ -46,8 +46,9 @@ exports.actualizarItem = async (req,res) => {
     if(precio) nuevoItem.precio = precio;    
     if(descripcion) nuevoItem.descripcion = descripcion;    
     if(tipo) nuevoItem.tipo = tipo;    
-    if(disponibles) nuevoItem.disponibles = disponibles;    
-
+    if(disponibles) nuevoItem.disponibles = disponibles;  
+    if(img) nuevoItem.img = img;    
+    
     try {
         //revisar el ID        
         let item = await Items.findById(req.params.id);

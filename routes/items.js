@@ -12,7 +12,8 @@ router.post('/',
         check('precio', 'El precio de la carta es obligatorio').not().isEmpty(),
         check('descripcion', 'La descripcion de la carta es obligatorio').not().isEmpty(),
         check('tipo', 'El tipo de la carta es obligatorio').not().isEmpty(),
-        check('disponibles', 'El numero de disponibles de la carta es obligatorio').not().isEmpty()
+        check('disponibles', 'El numero de disponibles de la carta es obligatorio').not().isEmpty(),
+        check('img', 'La imagen de la carta es obligatorio').not().isEmpty()
     ],
     itemsController.crearItem
 );

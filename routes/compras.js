@@ -14,14 +14,4 @@ router.post('/:id',
     comprasController.crearCompra
 );
 
-router.get('/',
-    auth,
-    comprasController.obtenerCompras
-)
-
-router.get('/ventas',
-    auth,
-    comprasController.obtenerVentas
-)
-
 module.exports = router;
