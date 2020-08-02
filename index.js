@@ -3,7 +3,7 @@ const express = require('express');
 const conectarDB = require('./config/db');
 const cors = require('cors')
 
-let bodyParser = require("body-parser");
+const bodyParser = require("body-parser");
 
 //crear el servidor
 const app = express();
