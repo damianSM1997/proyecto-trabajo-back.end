@@ -22,7 +22,7 @@ exports.crearItem = async (req,res) => {
         if(req.body.img!= ""){
             let imagen  = req.body.img;
             var fs = require('fs');
-            var nombreArchivo = Math.random().toString()+".jpg";
+            var nombreArchivo = Math.random().toString()+".png";
             fs.writeFile("public/upload/" + nombreArchivo, imagen, "base64", (error) => {
                 if(error){
                     return res.status(400).json({errores: errores.array()})

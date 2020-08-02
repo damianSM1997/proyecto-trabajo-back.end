@@ -3,9 +3,14 @@ const express = require('express');
 const conectarDB = require('./config/db');
 const cors = require('cors')
 
+let bodyParser = require("body-parser");
+
 //crear el servidor
 const app = express();
 
+//esta parte extiende el limite 
+app.use(bodyParser.json({limit: "50mb"}));
+app.use(bodyParser.urlencoded({limit: "50mb", extended: true,parameterLimit:50000}));
 //conectar a la DB
 conectarDB();
 
