@@ -5,8 +5,6 @@ const bcryptjs = require('bcryptjs');
 const {validationResult} = require('express-validator');
 const jwt = require('jsonwebtoken');
 
-
-
 exports.crearUsuario = async(req,res) => {
     //let SECRETA = 'palabrasecreta';
     //revisar si hay errores
@@ -15,12 +13,12 @@ exports.crearUsuario = async(req,res) => {
         return res.status(400).json({errores: errores.array()})
     }
 
-    //extraer el email y password
     const {email,password} = req.body;
-
+    
 
     
     try {
+        
         //validar que el usuario registrado sea unico
         let usuario = await Usuario.findOne({email});
 

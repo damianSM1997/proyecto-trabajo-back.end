@@ -22,7 +22,7 @@ const ItemsShema = mongoose.Schema({
     tipo: {
         type: String,
         required: true,
-        trim: true
+        //trim: true
     },
     img: {
         type: String,

@@ -14,12 +14,26 @@ exports.crearItem = async (req,res) => {
         //crear un nuevo item
         const items = new Items(req.body);
 
+        
+
         //guardar el creador via jwt
         items.creador = req.usuario.id;
-        //guardamos item
-        items.save();
-        res.json(items);
-        
+
+        if(req.body.img!= ""){
+            let imagen  = req.body.img;
+            var fs = require('fs');
+            var nombreArchivo = Math.random().toString()+".jpg";
+            fs.writeFile("public/upload/" + nombreArchivo, imagen, "base64", (error) => {
+                if(error){
+                    return res.status(400).json({errores: errores.array()})
+                }
+
+                items.img = "public/upload/" + nombreArchivo;
+                //guardamos item
+                items.save();
+                res.json(items);
+            })
+        }        
     } catch (error) {
         console.log(error);
         res.status(500).send('Hubo un error')

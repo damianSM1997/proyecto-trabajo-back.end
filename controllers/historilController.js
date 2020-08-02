@@ -20,11 +20,7 @@ exports.obtenerCompras = async (req,res) => {
 exports.obtenerVentas = async (req,res) => {
     let item = await Items.findById(req.params.id);
     //console.log(item)
-    try {
-        console.log(req.body);
-        console.log(req.usuario)
-        console.log(req.ventas)
-        console.log(req.params)
+    try {        
         // console.log(req.usuario);        
         const ventas = await Compras.find({IDvendedor: req.usuario.id}).sort({fecha: -1});
         res.json({ventas});        

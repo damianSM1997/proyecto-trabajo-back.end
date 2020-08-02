@@ -18,6 +18,10 @@ app.use(express.json({extended:true}));
 //puerto de la app
 const port = process.env.PORT || 4000;
 
+
+app.use("public/upload", express.static(__dirname + "public/upload"))
+
+
 //importar rutas
 app.use('/api/usuarios', require('./routes/usuarios'));
 app.use('/api/auth', require('./routes/auth'));
