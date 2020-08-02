@@ -8,9 +8,10 @@ const bodyParser = require("body-parser");
 //crear el servidor
 const app = express();
 
-//esta parte extiende el limite 
+//esta parte extiende el limite disponible para la imagen en base64
 app.use(bodyParser.json({limit: "50mb"}));
 app.use(bodyParser.urlencoded({limit: "50mb", extended: true,parameterLimit:50000}));
+
 //conectar a la DB
 conectarDB();
 
@@ -34,9 +35,6 @@ app.use('/api/items', require('./routes/items'));
 app.use('/api/consultas', require('./routes/consultas'));
 app.use('/api/compras', require('./routes/compras'));
 app.use('/api/historial', require('./routes/historial'));
-
-
-
 
 //arrancar la app
  app.listen(port, () => {

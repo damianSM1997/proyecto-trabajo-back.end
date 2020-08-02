@@ -9,25 +9,26 @@ exports.crearItem = async (req,res) => {
     if(!errores.isEmpty() ) {
         return res.status(400).json({errores: errores.array()})
     }
-
     try {
         //crear un nuevo item
-        const items = new Items(req.body);
-
-        
-
+        const items = new Items(req.body);        
         //guardar el creador via jwt
         items.creador = req.usuario.id;
-
+        // para este punto obvio tiene que haber algo pues desde la primara parte
+        // revisa si hay algo vasio o no cumple con los requicitos pero agrego un arror por si las dudas        
         if(req.body.img!= ""){
+            
             let imagen  = req.body.img;
-            var fs = require('fs');
-            var nombreArchivo = Math.random().toString()+".png";
+            let fs = require('fs');
+            //nombre random con la extencion .png asignado a "nombreArchivo"
+            let nombreArchivo = Math.random().toString()+".png";
+
+            //la direccion a la cual se va a guardar -- nombre del archivo -- la imagen en cuistion en base64
             fs.writeFile("public/upload/" + nombreArchivo, imagen, "base64", (error) => {
                 if(error){
-                    return res.status(400).json({errores: errores.array()})
+                    //por si llega un error
+                    return res.status(404).send('Hubo un error, no hay ninguna imagen disponible')
                 }
-
                 items.img = "public/upload/" + nombreArchivo;
                 //guardamos item
                 items.save();
