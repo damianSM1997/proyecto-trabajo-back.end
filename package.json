@@ -7,7 +7,7 @@
     "start": "node .",
     "dev": "nodemon ."
   },
-  "author": "Mario A. Ochoa Tovar",
+  "author": "Damian Susano Martinez",
   "license": "ISC",
   "devDependencies": {
     "nodemon": "^2.0.4"
