@@ -1,3 +1,4 @@
+require('./config/config');
 //require('./config/config')
 const express = require('express');
 const conectarDB = require('./config/db');
@@ -22,7 +23,7 @@ app.use(cors())
 app.use(express.json({extended:true}));
 
 //puerto de la app
-const port = process.env.PORT || 4000;
+//const port = process.env.PORT || 4000;
 
 
 app.use("public/upload", express.static(__dirname + "public/upload"))
@@ -37,8 +38,8 @@ app.use('/api/compras', require('./routes/compras'));
 app.use('/api/historial', require('./routes/historial'));
 
 //arrancar la app
- app.listen(port, () => {
-     console.log(`Server online puerto ${port}`)
+ app.listen(process.env.PORT, () => {
+     console.log(`Server online puerto:`, process.env.PORT)
  });
 
 //app.listen(process.env.PORT, () => {
