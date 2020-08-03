@@ -1,5 +1,8 @@
 # Proyecto tienda de cartas de Yugioh
 ##### Es importante que se tengan conocimientos  de MongoDB y Heroku
+
+![imgGitHub](https://user-images.githubusercontent.com/29550322/89142581-71dfb980-d50d-11ea-8e2e-782c9745ff23.jpg)
+
 En el siguiente proyecto se muestra una API-REST para una tienda online de venta de cartas de Yuguioh dentro de la misma tenemos la opción de:
 
 - Login 
