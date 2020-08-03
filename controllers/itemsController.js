@@ -37,14 +37,15 @@ exports.crearItem = async (req,res) => {
         }        
     } catch (error) {
         console.log(error);
-        res.status(500).send('Hubo un error')
+        res.status(500).send('Hubo un error');
     }
 }
 
 
 //parte para actualizar una carta a partir del id de la carta
 exports.actualizarItem = async (req,res) => {
-
+    const items = new Items(req.body); 
+    
     //revisar si hay errores
     const errores = validationResult(req);
     if(!errores.isEmpty() ) {
@@ -57,13 +58,40 @@ exports.actualizarItem = async (req,res) => {
     const nuevoItem = {};            
 
     // de existir alguno de los siguientes campos --> entonces asigar al nuevo areglo
+    
     if(titulo) nuevoItem.titulo = titulo;    
     if(precio) nuevoItem.precio = precio;    
     if(descripcion) nuevoItem.descripcion = descripcion;    
     if(tipo) nuevoItem.tipo = tipo;    
-    if(disponibles) nuevoItem.disponibles = disponibles;  
-    if(img) nuevoItem.img = img;    
+    if(disponibles) nuevoItem.disponibles = disponibles; 
+    //if(img) nuevoItem.img = img;  
+        
+    function imgNueva (img){        
+        //ruta a la que se direccionara
+        let ruta = "public/upload/";                
+        let imagen  = req.body.img;
+        let fs = require('fs');
+        let nombreArchivo = Math.random().toString()+".png";
+        //nombre random con la extencion .png asignado a "nombreArchivo"            
+        //la direccion a la cual se va a guardar -- nombre del archivo -- la imagen en cuistion en base64
+        fs.writeFile( ruta + nombreArchivo, imagen, "base64", (error) => {
+            if(error){
+                //por si llega un error
+                return res.status(404).send('Hubo un error, no hay ninguna imagen disponible')
+            }                                                                                                                                                                                   
+        })
+        return ruta + nombreArchivo;
+    }
     
+    
+    if(img) {
+        //nuevoItem.img = "public/upload/" + nombreArchivo;
+        nuevoItem.img = imgNueva(img);
+    }
+    
+
+    
+
     try {
         //revisar el ID        
         let item = await Items.findById(req.params.id);

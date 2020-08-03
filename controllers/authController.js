@@ -36,6 +36,7 @@ exports.autenticarUsuario = async (req,res) => {
         };
 
         //firmar el jwt
+        
         jwt.sign(payload, process.env.SECRETA, {
             //jwt.sign(payload, SECRETA, {
             expiresIn: 3600000 //Tienpo de expiracion
