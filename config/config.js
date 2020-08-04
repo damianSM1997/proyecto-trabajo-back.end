@@ -16,7 +16,7 @@ process.env.NODE_ENV = process.env.NODE_ENV || 'dev';
 // 60 minutos
 // 24 horas
 // 30 días
-process.env.CADUCIDAD_TOKEN = 60 * 60 * 24 * 30;
+//process.env.CADUCIDAD_TOKEN = 60 * 60 * 24 * 30;
 
 
 // ============================
@@ -30,8 +30,8 @@ process.env.SECRETA = process.env.SECRETA || 'este-es-el-seed-desarrollo';
 let urlDB;
 
 if (process.env.NODE_ENV === 'dev') {
-   urlDB = 'mongodb://localhost:27017/cartas';
+    urlDB = 'mongodb://localhost:27017/cartas';
 } else {
-urlDB = process.env.DB_MONGO;
+    urlDB = process.env.DB_MONGO;
 }
 process.env.URLDB = urlDB;
