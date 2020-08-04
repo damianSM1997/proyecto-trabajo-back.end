@@ -216,6 +216,22 @@ En este se requiere agregar el id del usuario al que se requiera consultar las c
 
 Este es igual al de arriba pero aquí se agrega el id de la carta especifica a buscar y de no existir carta alguna entonces retornara el error de que la carta no existe 
 
+
+# Consulta por algún valor específico
+## {{url}}/api/consultas/carta/tipo/
+
+En este se puede buscar por cualquier valor que se contenga la carta, por ejemplo, título,  descripción o creador además te va filtrando la información con los valores ingresados
+De querer hacer una consulta de este tipo la sintaxis en el RAW del body es la siguiente: 
+
+> {
+   "tipo": "Dragon",   
+   "titulo": "Prueva Dragon a lado de Ra 15",
+   "creador": "5f28a24e5e48e41500a5c567"
+}
+
+pero recuerda que dentro del JSON van los valores que requieras en tu búsqueda, en el caso de no encontrar nada te retorna un arreglos con objetos vacíos  
+
+
 # Compras Metodo POST
 ## {{url}}/api/compras/idDelaCarta
 En este método se requiere del id de la carta que se desea comprar, además en la parte del body se tiene que especificar el método de pago de la siguiente forma: 

@@ -192,9 +192,6 @@ exports.eliminaritem = async(req, res) => {
     }
 }
 
-
-
-
 // en lo personal me agrada mas la otra forma para subir la imagen de la carte pero
 // pueden sentirse libres de poder ocupar el metodo que mas les guste o se acomo
 // mejor a lo que requieran, para ocupar estas formas solo es nesesario cambiar el
