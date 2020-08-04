@@ -92,7 +92,33 @@ Un usuario puede crear una carta o editarla pero también puede eliminarla, pero
 | x-auth-token | eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7ImlkIjoiNWYyNDk4ZWYyOWJkODQwMWI1NjBiMjRlIn0sImlhdCI6MTU5NjQxNzYyNiwiZXhwIjoxNjAwMDE3NjI2fQ.g7hFnWADWkQ_As2q-sdaokmfsañlsado |
 ##### Nota: El nombre de la variable no debe de cambiar y es fundamentan para las siguientes acciones 
 
-# Creación Metodo POST
+
+Algo importante de mencionar en este punto es que decidí hacer 2 tipos de formas para poder subir las imagenes una es en base64 y la otra es la que se presenta a continuación, en lo personal me gusta más esta forma, por lo que el proyecto principal está funcionando con la siguiente aunque también pueden ocupar la otra, lo único que deben hacer es ir a el archivo “items.js”  que se encuentra en la carpeta routes y agregarles un 2 a la siguientes direcciónes
+>itemsController.crearItem -----> >itemsController.crearItem2
+
+>itemsController.actualizarItem -----> >itemsController.actualizarItem2
+
+pero no es necesario, aunque lo pueden hacer por curiosidad, a continuación se presentara la forma de crear una carta: 
+
+# Creación Metodo POST 
+## {{url2}}/api/items
+Una vez ingresado el token del usuario en el “Header” puedes agregar una carta siguiendo la siguiente sintaxis en el “form data” del body de postman: 
+
+| KEY | VALUE |
+| ------ | ------ |
+| titulo | Slifer el draón del cielo |
+| precio | 250 |
+| descripcion | Es un dios |
+| tipo | Dios |
+| disponibles | 5 |
+| img  | slifer.jpg |
+
+Algo que se debe de considerar es que al momento de poner el key de imagen debe de cambiarse de “Text” a “File” de esta forma del lado de value aparecera un boton que dice “Select files” al dar clic sobre este les abrira una ventana en donde podran escojer la imagen que corresponderá la carta 
+Si no se escribe alguno de los siguientes campos entonces la solicitud no procederá y te marcara un error en donde se va a hacer mención del campo que olvidaste escribir
+
+
+
+# Creación Metodo POST IMG Base64
 ## {{url2}}/api/items
 La sintaxis para agregar una carta es la siguiente:
 
