@@ -16,12 +16,15 @@ Desargas el proyecto y ejecutas la siguiente línea de código desde tu terminal
 ```sh
 $ npm install
 ```
-Despues creas un archivo con extensión .env con los siguientes valores dentro
-DB_MONGO=mongodb+srv://usuario:contraseña@cluster0-naamb.mongodb.net/nombre-DB
-SECRETA=palabrasecreta(lo que ustedes queiran)
+En el archivo config que está dentro de la carpeta config encontraran la informacion para poder cambiar la palabra secreta o la base de datos local de mongoDB, por si desean cambiar los datos 
 
-DB_MONGO hace referencia a tu base de datos en mongo atlas,  aunque también puede ser una base de datos local  por ejemplo:
-DB_MONGO=mongodb://localhost:27017/cartas
+La palabra secreta puede cambiar por lo que ustedes deseen 
+> process.env.SECRETA = process.env.SECRETA || 'este-es-el-seed-desarrollo';
+
+De igual forma la BD local
+> urlDB = 'mongodb://localhost:27017/cartas';
+
+En ambos casos es solo buscar en el archivo config las siguientes líneas de código y cambiar lo que hay dentro de las comillas, aunque no es necesario y recomiendo dejarlas así, aunque en el deployment en heroku que se explicará a continuación puedes poner el url de tu base de datos de mongo remota haciendo uso de las variables de entorno en heroku 
 
 # Especificaciones para el deployment
 El proyecto está listo para hacer su deployment en Heroku pero hay unas cosas a consideración estas van en relación a sus variables de entorno, entonces después de subirlo a un proyecto en heroku los pasos son los siguientes: 
