@@ -21,5 +21,10 @@ router.get('/especifico/:id',
     consultasController.obtenerItemsEspecifico
 )
 
+router.get('/carta/tipo/',
+    auth,
+    consultasController.obtenerPorTipo
+)
+
 
 module.exports = router;

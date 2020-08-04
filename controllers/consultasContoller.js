@@ -46,3 +46,15 @@ exports.obtenerItemsEspecifico  = async (req,res) => {
 }
 
 
+
+exports.obtenerPorTipo = async (req,res) => {    
+    console.log(req.body)            
+    try {
+         console.log(req.usuario);
+        const items = await Items.find(req.body).sort({creado: -1});
+        res.json({items});
+    } catch (error) {
+        console.log(error);
+        res.status(500).send('Hubo un error');
+    }
+}

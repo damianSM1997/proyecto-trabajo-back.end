@@ -1,7 +1,7 @@
 {
-  "name": "merntaskservidor",
+  "name": "TiendaCartas",
   "version": "1.0.0",
-  "description": "MERN API para MERN TASK",
+  "description": "API tienda de cartas",
   "main": "index.js",
   "scripts": {
     "start": "node .",
