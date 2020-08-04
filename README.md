@@ -135,7 +135,34 @@ Algo que se tiene que tomar a consideración es que la imagen debe de ingresarse
 Solo suben la imagen y copian el largo código que les dará  al darle click en “show code” todo menos el tipo de imagen y la base, ejemplo de lo que no se debe de copiar: “data:image/png;base64”
 Si no se escribe alguno de los siguientes campos entonces la solicitud no procederá y te marcara un error en donde se va a hacer mención del campo que olvidaste escribir
 
+
 # Update Metodo PUT
+Como se comentó anteriormente decidí hacer otro metodo para no subir la imagen en base64  aunque si desean seguir ese método al inicio de de esta sección “cartas” se explica lo que se tiene que hacer para poder ocupar ese método.
+## {{url}}/api/items/idCartaAEditar
+Primero se tiene que obtener el id de la carta a editar, es aquí donde entra la importancia del token, por que de lo contrario cualquiera puede editar o eliminar la carta pero con el token auténticas que tu eres el creador de la carta y por lo tanto puedes hacer cambios. supongamos que ya se tiene el id de la carta en cuestión y que está agregado al url, ejemplo: {{url}}/api/items/5f2487e529bd8401b560b2 La sintaxis para cambiar un valor es la misma que para crearla pero aqui solo ocupas los valores que deseas cambiar
+| KEY | VALUE |
+| ------ | ------ |
+| titulo | Slifer el draón del cielo |
+| precio | 250 |
+| descripcion | Es un dios |
+| tipo | Dios |
+| disponibles | 5 |
+| img  | slifer.jpg |
+
+Ejemplo: 
+| KEY | VALUE |
+| ------ | ------ |
+| titulo | Slifer el dragón del cielo |
+| descripcion | Es una carta de dioses egipcios |
+| tipo | Dios Egipcio |
+| img  | slifer2.jpg |
+
+
+No olvidar  que al momento de poner el key de imagen debe de cambiarse de “Text” a “File” de esta forma del lado de value aparecera un boton que dice “Select files” al dar clic sobre este les abrira una ventana en donde podran escojer la imagen que corresponderá la carta. (en el caso de querer cambiar la imagen)
+Si no se escribe alguno de los siguientes campos entonces la solicitud no procederá y te marcara un error en donde se va a hacer mención del campo que olvidaste escribir 
+
+
+# Update Metodo PUT imgBase64
 ## {{url}}/api/items/idCartaAEditar
 Primero se tiene que obtener el id de la carta a editar, es aquí donde entra la importancia del token, por que de lo contrario cualquiera puede editar o eliminar la carta pero con el token auténticas que tu eres el creador de la carta y por lo tanto puedes hacer cambios.
 supongamos que ya se tiene el id de la carta en cuestión y que está agregado al url, ejemplo: {{url}}/api/items/5f2487e529bd8401b560b2
